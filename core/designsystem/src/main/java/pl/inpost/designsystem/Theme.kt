@@ -9,9 +9,13 @@ private val inPostColorScheme = lightColorScheme(
     primary = Yellow,
     onPrimary = Color.White,
     surface = LightGray,
+    surfaceVariant = Color.White,
     surfaceContainer = Color.White,
+    surfaceContainerLow = Color.White,
     onSurface = DarkGray,
     onSurfaceVariant = MediumGray,
+    primaryContainer = Color.White,
+    onPrimaryContainer = DarkGray,
     error = Color.Red
 )
 

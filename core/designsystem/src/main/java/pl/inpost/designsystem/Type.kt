@@ -53,6 +53,7 @@ val typography = Typography(
         fontSize = 12.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.4.sp,
+
     ),
     labelMedium = TextStyle(
         fontFamily = montserratFamily,
