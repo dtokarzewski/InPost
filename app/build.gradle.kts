@@ -28,6 +28,7 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
         compose = true
     }
@@ -40,6 +41,7 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.5.4")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
+    implementation(project(":core:common"))
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.compose.runtime)

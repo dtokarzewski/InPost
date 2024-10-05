@@ -22,14 +22,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import pl.inpost.data.model.Shipment
-import pl.inpost.data.model.testdata.shipmentTestData
+import pl.dtokarzewski.data.ShipmentStatusUi
+import pl.dtokarzewski.data.ShipmentUi
+import pl.dtokarzewski.data.testdata.shipmentTestData
 import pl.inpost.designsystem.InPostTheme
 import pl.inpost.shipmentlist.R
+import timber.log.Timber
 
 @Composable
 internal fun ShipmentCard(
-    shipment: Shipment,
+    shipment: ShipmentUi,
     onMoreClicked: () -> Unit,
     onHideClicked: () -> Unit,
     modifier: Modifier = Modifier,
@@ -50,17 +52,16 @@ internal fun ShipmentCard(
                 number = shipment.number,
             )
             Spacer(modifier = Modifier.height(16.dp))
-            // TODO HARDCODE move date and label resolution to mapper or domain
             ShipmentStatus(
-                status = stringResource(R.string.status_ready_to_pickup),
-                dateLabel = stringResource(R.string.label_awaiting),
-                date = shipment.expiryDate?.toString(),
+                status = shipment.status,
+                date = shipment.statusDate,
             )
             Spacer(modifier = Modifier.height(16.dp))
-            // TODO HARDCODE move sender resolution to mapper or domain
-            Sender(
-                sender = shipment.sender?.email ?: "",
-            )
+            shipment.sender?.let {
+                Sender(
+                    sender = it,
+                )
+            }
         }
     }
 }
@@ -95,8 +96,7 @@ internal fun ShipmentNumber(
 
 @Composable
 internal fun ShipmentStatus(
-    status: String,
-    dateLabel: String,
+    status: ShipmentStatusUi,
     date: String?,
 ) {
     Row(
@@ -105,20 +105,44 @@ internal fun ShipmentStatus(
             .wrapContentHeight(),
     ) {
         Column(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(0.4f),
         ) {
             Text(
                 text = stringResource(R.string.label_parcel_status).uppercase(),
                 style = MaterialTheme.typography.labelMedium,
             )
+            val statusTextId = when (status) {
+                ShipmentStatusUi.ADOPTED_AT_SORTING_CENTER -> R.string.status_adopted_at_sorting_center
+                ShipmentStatusUi.SENT_FROM_SORTING_CENTER -> R.string.status_sent_from_sorting_center
+                ShipmentStatusUi.ADOPTED_AT_SOURCE_BRANCH -> R.string.status_adopted_at_source_branch
+                ShipmentStatusUi.SENT_FROM_SOURCE_BRANCH -> R.string.status_sent_from_source_branch
+                ShipmentStatusUi.AVIZO -> R.string.status_avizo
+                ShipmentStatusUi.CONFIRMED -> R.string.status_confirmed
+                ShipmentStatusUi.CREATED -> R.string.status_created
+                ShipmentStatusUi.DELIVERED -> R.string.status_delivered
+                ShipmentStatusUi.OTHER -> R.string.status_other
+                ShipmentStatusUi.OUT_FOR_DELIVERY -> R.string.status_out_for_delivery
+                ShipmentStatusUi.PICKUP_TIME_EXPIRED -> R.string.status_pickup_time_expired
+                ShipmentStatusUi.READY_TO_PICKUP -> R.string.status_ready_to_pickup
+                ShipmentStatusUi.RETURNED_TO_SENDER -> R.string.status_returned_to_sender
+            }
             Text(
-                text = status,
+                text = stringResource(statusTextId),
                 style = MaterialTheme.typography.bodyMedium,
             )
         }
         if (date != null) {
+            val dateLabel = when (status) {
+                ShipmentStatusUi.READY_TO_PICKUP -> stringResource(R.string.label_awaiting)
+                ShipmentStatusUi.DELIVERED -> stringResource(R.string.label_delivered)
+                else -> {
+                    Timber.e("Shipment status not supported: $status")
+                    ""
+                }
+            }
             Column(
-                modifier = Modifier.weight(2f),
+                horizontalAlignment = Alignment.End,
+                modifier = Modifier.weight(0.6f),
             ) {
                 Text(
                     text = dateLabel.uppercase(),
