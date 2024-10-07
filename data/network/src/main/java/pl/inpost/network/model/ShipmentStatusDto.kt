@@ -1,4 +1,4 @@
-package pl.inpost.data.model
+package pl.inpost.network.model
 
 /**
  * Order of statuses - higher number = higher priority
@@ -16,7 +16,7 @@ package pl.inpost.data.model
  * 12. READY_TO_PICKUP
  * 13. PICKUP_TIME_EXPIRED
  */
-enum class ShipmentStatus() {
+enum class ShipmentStatusDto() {
     ADOPTED_AT_SORTING_CENTER,
     SENT_FROM_SORTING_CENTER,
     ADOPTED_AT_SOURCE_BRANCH,

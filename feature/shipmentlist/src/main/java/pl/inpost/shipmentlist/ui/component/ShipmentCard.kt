@@ -29,7 +29,7 @@ import pl.inpost.shipmentlist.data.data.CustomerUi
 import pl.inpost.shipmentlist.data.data.ShipmentDisplayDateTypeUi
 import pl.inpost.shipmentlist.data.data.ShipmentStatusUi
 import pl.inpost.shipmentlist.data.data.ShipmentUi
-import pl.inpost.shipmentlist.data.data.testdata.shipmentTestData
+import pl.inpost.shipmentlist.data.data.testdata.shipmentUiTestData
 
 @Composable
 internal fun ShipmentCard(
@@ -138,7 +138,13 @@ internal fun ShipmentStatus(
             )
 
             ShipmentDisplayDateTypeUi.EXPIRY_DATE -> Pair(
-                stringResource(R.string.label_awaiting),
+                stringResource(
+                    if (shipment.status == ShipmentStatusUi.PICKUP_TIME_EXPIRED) {
+                        R.string.label_expired
+                    } else {
+                        R.string.label_awaiting
+                    }
+                ),
                 shipment.expiryDate
             )
 
@@ -215,7 +221,7 @@ private fun ShipmentCardPreview() {
     InPostTheme {
         Surface {
             ShipmentCard(
-                shipment = shipmentTestData(),
+                shipment = shipmentUiTestData(),
                 onMoreClicked = {},
                 onHideClicked = {},
             )

@@ -8,7 +8,7 @@ import pl.inpost.domain.model.ShipmentStatus
 import pl.inpost.domain.model.ShipmentType
 import java.time.ZonedDateTime
 
-fun shipmentTestData() = Shipment(
+fun shipmentTestData(): Shipment = Shipment(
     number = "16730345345597442248333",
     shipmentType = ShipmentType.PARCEL_LOCKER,
     status = ShipmentStatus.READY_TO_PICKUP,
@@ -30,22 +30,7 @@ fun shipmentTestData() = Shipment(
     expiryDate = ZonedDateTime.parse("2022-11-29T04:56:07Z"),
     storedDate = ZonedDateTime.parse("2022-11-29T04:56:07Z"),
     pickUpDate = null,
-    receiver = Customer(
-        email = "receiver@example.com",
-        phoneNumber = "500500500",
-        name = "IKEA"
-    ),
-    sender = Customer(
-        email = "sender@example.com",
-        phoneNumber = "500500500",
-        name = "sender",
-    ),
-    operations = Operations(
-        delete = true,
-        manualArchive = true,
-        collect = true,
-        highlight = true,
-        expandAvizo = true,
-        endOfWeekCollection = false,
-    ),
+    receiver = receiverTestData(),
+    sender = senderTestData(),
+    operations = operationsTestData(),
 )

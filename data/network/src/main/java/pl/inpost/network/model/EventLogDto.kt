@@ -1,8 +1,8 @@
-package pl.inpost.data.model
+package pl.inpost.network.model
 
 import java.time.ZonedDateTime
 
-data class EventLog(
+data class EventLogDto(
     val name: String,
     val date: ZonedDateTime
 )

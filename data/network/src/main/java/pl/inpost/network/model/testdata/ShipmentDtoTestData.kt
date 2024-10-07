@@ -1,25 +1,24 @@
-package pl.inpost.data.model.testdata
+package pl.inpost.network.model.testdata
 
-import pl.inpost.data.model.Customer
-import pl.inpost.data.model.EventLog
-import pl.inpost.data.model.Operations
-import pl.inpost.data.model.Shipment
+import pl.inpost.network.model.EventLogDto
+import pl.inpost.network.model.OperationsDto
+import pl.inpost.network.model.ShipmentDto
 import java.time.ZonedDateTime
 
-fun shipmentTestData() = Shipment(
+fun shipmentDtoTestData() = ShipmentDto(
     number = "16730345345597442248333",
     shipmentType = "PARCEL_LOCKER",
     status = "READY_TO_PICKUP",
     eventLog = listOf(
-        EventLog(
+        EventLogDto(
             name = "READY_TO_PICKUP",
             date = ZonedDateTime.parse("2018-08-01T04:56:07Z")
         ),
-        EventLog(
+        EventLogDto(
             name = "SENT_FROM_SOURCE_BRANCH",
             date = ZonedDateTime.parse("2018-08-18T04:56:07Z")
         ),
-        EventLog(
+        EventLogDto(
             name = "CONFIRMED",
             date = ZonedDateTime.parse("2018-08-14T04:56:07Z")
         ),
@@ -28,17 +27,9 @@ fun shipmentTestData() = Shipment(
     expiryDate = ZonedDateTime.parse("2022-11-29T04:56:07Z"),
     storedDate = ZonedDateTime.parse("2022-11-29T04:56:07Z"),
     pickUpDate = null,
-    receiver = Customer(
-        email = "receiver@example.com",
-        phoneNumber = "500500500",
-        name = "John Smith"
-    ),
-    sender = Customer(
-        email = "sender@example.com",
-        phoneNumber = "500500500",
-        name = "IKEA",
-    ),
-    operations = Operations(
+    receiver = receiverDtoTestData(),
+    sender = senderDtoTestData(),
+    operations = OperationsDto(
         delete = true,
         manualArchive = true,
         collect = true,

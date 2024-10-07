@@ -29,4 +29,6 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(project(":core:common"))
     ksp(libs.hilt.compiler)
+
+    testImplementation(libs.junit)
 }

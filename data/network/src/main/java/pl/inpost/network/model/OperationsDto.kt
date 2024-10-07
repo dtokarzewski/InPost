@@ -1,4 +1,4 @@
-package pl.inpost.data.model
+package pl.inpost.network.model
 
 /**
  * @param manualArchive - shipment can be manually (gesture) archived
@@ -8,7 +8,7 @@ package pl.inpost.data.model
  * @param expandAvizo - shipment time to pick up can be expanded - show button
  * @param endOfWeekCollection - shipment will be available to pick up over the weekend - change colors
  */
-data class Operations(
+data class OperationsDto(
     val manualArchive: Boolean,
     val delete: Boolean,
     val collect: Boolean,
