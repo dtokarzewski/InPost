@@ -4,6 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import pl.inpost.domain.data.Shipment
 
 interface ShipmentRepository {
-    fun getShipmentsAsFlow(): Flow<List<Shipment>>
+    fun getHighlightedShipmentsAsFlow(): Flow<List<Shipment>>
+    fun getStandardShipmentsAsFlow(): Flow<List<Shipment>>
     fun hideShipment(shipmentNumber: String)
 }
