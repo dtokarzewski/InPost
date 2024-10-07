@@ -1,3 +1,4 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -6,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "pl.inpost.feature.shipmentlist.data"
+    namespace = "pl.inpost.domain"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -26,9 +27,12 @@ android {
 
 dependencies {
     implementation(project(":domain:data"))
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.hilt.android)
-    implementation(project(":core:common"))
     ksp(libs.hilt.compiler)
+    implementation(libs.timber)
 
     testImplementation(libs.junit)
 }

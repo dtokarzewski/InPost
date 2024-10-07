@@ -3,11 +3,11 @@ package pl.inpost.shipmentlist.data.mapper
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import pl.inpost.domain.model.Customer
-import pl.inpost.domain.model.testdata.senderTestData
-import pl.inpost.shipmentlist.data.data.CustomerDisplayTypeUi
-import pl.inpost.shipmentlist.data.data.CustomerUi
-import pl.inpost.shipmentlist.data.data.testdata.senderUiTestData
+import pl.inpost.domain.data.Customer
+import pl.inpost.domain.data.testdata.senderTestData
+import pl.inpost.shipmentlist.data.model.CustomerDisplayTypeUi
+import pl.inpost.shipmentlist.data.model.CustomerUi
+import pl.inpost.shipmentlist.data.model.testdata.senderUiTestData
 
 class CustomerUiMapperTest {
 

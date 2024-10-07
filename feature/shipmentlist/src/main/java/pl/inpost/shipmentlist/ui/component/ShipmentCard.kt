@@ -24,12 +24,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pl.inpost.designsystem.InPostTheme
 import pl.inpost.shipmentlist.R
-import pl.inpost.shipmentlist.data.data.CustomerDisplayTypeUi
-import pl.inpost.shipmentlist.data.data.CustomerUi
-import pl.inpost.shipmentlist.data.data.ShipmentDisplayDateTypeUi
-import pl.inpost.shipmentlist.data.data.ShipmentStatusUi
-import pl.inpost.shipmentlist.data.data.ShipmentUi
-import pl.inpost.shipmentlist.data.data.testdata.shipmentUiTestData
+import pl.inpost.shipmentlist.data.model.CustomerDisplayTypeUi
+import pl.inpost.shipmentlist.data.model.CustomerUi
+import pl.inpost.shipmentlist.data.model.ShipmentDisplayDateTypeUi
+import pl.inpost.shipmentlist.data.model.ShipmentStatusUi
+import pl.inpost.shipmentlist.data.model.ShipmentUi
+import pl.inpost.shipmentlist.data.model.testdata.shipmentUiTestData
 
 @Composable
 internal fun ShipmentCard(

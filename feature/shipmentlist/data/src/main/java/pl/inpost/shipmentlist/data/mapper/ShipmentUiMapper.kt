@@ -1,10 +1,10 @@
 package pl.inpost.shipmentlist.data.mapper
 
 import pl.inpost.common.util.toPresentationString
-import pl.inpost.shipmentlist.data.data.ShipmentUi
-import pl.inpost.domain.model.Shipment
-import pl.inpost.domain.model.ShipmentStatus
-import pl.inpost.shipmentlist.data.data.ShipmentDisplayDateTypeUi
+import pl.inpost.shipmentlist.data.model.ShipmentUi
+import pl.inpost.domain.data.Shipment
+import pl.inpost.domain.data.ShipmentStatus
+import pl.inpost.shipmentlist.data.model.ShipmentDisplayDateTypeUi
 import javax.inject.Inject
 
 class ShipmentUiMapper @Inject constructor(

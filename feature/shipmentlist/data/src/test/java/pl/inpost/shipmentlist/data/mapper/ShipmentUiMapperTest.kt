@@ -3,11 +3,11 @@ package pl.inpost.shipmentlist.data.mapper
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import pl.inpost.domain.model.ShipmentStatus
-import pl.inpost.domain.model.testdata.shipmentTestData
-import pl.inpost.shipmentlist.data.data.ShipmentDisplayDateTypeUi
-import pl.inpost.shipmentlist.data.data.ShipmentStatusUi
-import pl.inpost.shipmentlist.data.data.testdata.shipmentUiTestData
+import pl.inpost.domain.data.ShipmentStatus
+import pl.inpost.domain.data.testdata.shipmentTestData
+import pl.inpost.shipmentlist.data.model.ShipmentDisplayDateTypeUi
+import pl.inpost.shipmentlist.data.model.ShipmentStatusUi
+import pl.inpost.shipmentlist.data.model.testdata.shipmentUiTestData
 import java.time.ZonedDateTime
 
 class ShipmentUiMapperTest {

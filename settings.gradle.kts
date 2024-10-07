@@ -17,9 +17,10 @@ dependencyResolutionManagement {
 rootProject.name = "InPost Recruitment Task"
 
 include(":app")
-include(":core:designsystem")
-include(":feature:shipmentlist")
-include(":data:network")
-include(":domain:model")
-include(":feature:shipmentlist:data")
 include(":core:common")
+include(":core:designsystem")
+include(":data:network")
+include(":domain")
+include(":domain:data")
+include(":feature:shipmentlist")
+include(":feature:shipmentlist:data")

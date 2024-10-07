@@ -1,8 +1,8 @@
 package pl.inpost.shipmentlist.data.mapper
 
-import pl.inpost.domain.model.Customer
-import pl.inpost.shipmentlist.data.data.CustomerDisplayTypeUi
-import pl.inpost.shipmentlist.data.data.CustomerUi
+import pl.inpost.domain.data.Customer
+import pl.inpost.shipmentlist.data.model.CustomerDisplayTypeUi
+import pl.inpost.shipmentlist.data.model.CustomerUi
 import timber.log.Timber
 import javax.inject.Inject
 

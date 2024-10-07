@@ -1,7 +1,7 @@
 package pl.inpost.shipmentlist.data.mapper
 
-import pl.inpost.domain.model.ShipmentStatus
-import pl.inpost.shipmentlist.data.data.ShipmentStatusUi
+import pl.inpost.domain.data.ShipmentStatus
+import pl.inpost.shipmentlist.data.model.ShipmentStatusUi
 import javax.inject.Inject
 
 class ShipmentStatusUiMapper @Inject constructor() {

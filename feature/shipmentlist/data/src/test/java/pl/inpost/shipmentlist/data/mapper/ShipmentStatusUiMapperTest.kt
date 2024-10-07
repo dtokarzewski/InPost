@@ -2,8 +2,8 @@ package pl.inpost.shipmentlist.data.mapper
 
 import org.junit.Assert.*
 import org.junit.Test
-import pl.inpost.domain.model.ShipmentStatus
-import pl.inpost.shipmentlist.data.data.ShipmentStatusUi
+import pl.inpost.domain.data.ShipmentStatus
+import pl.inpost.shipmentlist.data.model.ShipmentStatusUi
 
 class ShipmentStatusUiMapperTest {
 
