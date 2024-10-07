@@ -1,4 +1,4 @@
-package pl.dtokarzewski.data
+package pl.inpost.shipmentlist.data.data
 
 /**
  * @param manualArchive - shipment can be manually (gesture) archived

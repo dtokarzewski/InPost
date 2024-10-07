@@ -31,12 +31,12 @@ fun shipmentTestData() = Shipment(
     receiver = Customer(
         email = "receiver@example.com",
         phoneNumber = "500500500",
-        name = "IKEA"
+        name = "John Smith"
     ),
     sender = Customer(
         email = "sender@example.com",
         phoneNumber = "500500500",
-        name = "sender",
+        name = "IKEA",
     ),
     operations = Operations(
         delete = true,

@@ -22,12 +22,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import pl.dtokarzewski.data.ShipmentStatusUi
-import pl.dtokarzewski.data.ShipmentUi
-import pl.dtokarzewski.data.testdata.shipmentTestData
 import pl.inpost.designsystem.InPostTheme
 import pl.inpost.shipmentlist.R
-import timber.log.Timber
+import pl.inpost.shipmentlist.data.data.CustomerDisplayTypeUi
+import pl.inpost.shipmentlist.data.data.CustomerUi
+import pl.inpost.shipmentlist.data.data.ShipmentDisplayDateTypeUi
+import pl.inpost.shipmentlist.data.data.ShipmentStatusUi
+import pl.inpost.shipmentlist.data.data.ShipmentUi
+import pl.inpost.shipmentlist.data.data.testdata.shipmentTestData
 
 @Composable
 internal fun ShipmentCard(
@@ -53,8 +55,7 @@ internal fun ShipmentCard(
             )
             Spacer(modifier = Modifier.height(16.dp))
             ShipmentStatus(
-                status = shipment.status,
-                date = shipment.statusDate,
+                shipment = shipment,
             )
             Spacer(modifier = Modifier.height(16.dp))
             shipment.sender?.let {
@@ -96,8 +97,7 @@ internal fun ShipmentNumber(
 
 @Composable
 internal fun ShipmentStatus(
-    status: ShipmentStatusUi,
-    date: String?,
+    shipment: ShipmentUi,
 ) {
     Row(
         modifier = Modifier
@@ -111,7 +111,7 @@ internal fun ShipmentStatus(
                 text = stringResource(R.string.label_parcel_status).uppercase(),
                 style = MaterialTheme.typography.labelMedium,
             )
-            val statusTextId = when (status) {
+            val statusTextId = when (shipment.status) {
                 ShipmentStatusUi.ADOPTED_AT_SORTING_CENTER -> R.string.status_adopted_at_sorting_center
                 ShipmentStatusUi.SENT_FROM_SORTING_CENTER -> R.string.status_sent_from_sorting_center
                 ShipmentStatusUi.ADOPTED_AT_SOURCE_BRANCH -> R.string.status_adopted_at_source_branch
@@ -131,15 +131,25 @@ internal fun ShipmentStatus(
                 style = MaterialTheme.typography.bodyMedium,
             )
         }
-        if (date != null) {
-            val dateLabel = when (status) {
-                ShipmentStatusUi.READY_TO_PICKUP -> stringResource(R.string.label_awaiting)
-                ShipmentStatusUi.DELIVERED -> stringResource(R.string.label_delivered)
-                else -> {
-                    Timber.e("Shipment status not supported: $status")
-                    ""
-                }
-            }
+        val (dateLabel, displayDate) = when (shipment.dateDisplayType) {
+            ShipmentDisplayDateTypeUi.PICKUP_DATE -> Pair(
+                stringResource(R.string.label_delivered),
+                shipment.pickUpDate
+            )
+
+            ShipmentDisplayDateTypeUi.EXPIRY_DATE -> Pair(
+                stringResource(R.string.label_awaiting),
+                shipment.expiryDate
+            )
+
+            ShipmentDisplayDateTypeUi.STORED_DATE -> Pair(
+                stringResource(R.string.label_stored),
+                shipment.storedDate
+            )
+
+            ShipmentDisplayDateTypeUi.NONE -> Pair(null, null)
+        }
+        if (dateLabel != null && displayDate != null) {
             Column(
                 horizontalAlignment = Alignment.End,
                 modifier = Modifier.weight(0.6f),
@@ -149,7 +159,7 @@ internal fun ShipmentStatus(
                     style = MaterialTheme.typography.labelMedium,
                 )
                 Text(
-                    text = date,
+                    text = displayDate,
                     style = MaterialTheme.typography.bodySmall,
                 )
             }
@@ -159,7 +169,7 @@ internal fun ShipmentStatus(
 
 @Composable
 fun Sender(
-    sender: String,
+    sender: CustomerUi,
 ) {
     Row(
         verticalAlignment = Alignment.Bottom,
@@ -170,14 +180,22 @@ fun Sender(
         Column(
             modifier = Modifier.weight(1f),
         ) {
-            Text(
-                text = stringResource(R.string.label_sender).uppercase(),
-                style = MaterialTheme.typography.labelMedium,
-            )
-            Text(
-                text = sender,
-                style = MaterialTheme.typography.bodyMedium,
-            )
+            val senderText = when (sender.displayType) {
+                CustomerDisplayTypeUi.NAME -> sender.name
+                CustomerDisplayTypeUi.EMAIL -> sender.email
+                CustomerDisplayTypeUi.PHONE_NUMBER -> sender.phoneNumber
+                CustomerDisplayTypeUi.NONE -> null
+            }
+            senderText?.let {
+                Text(
+                    text = stringResource(R.string.label_sender).uppercase(),
+                    style = MaterialTheme.typography.labelMedium,
+                )
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
         }
         Text(
             text = stringResource(R.string.label_more).lowercase(),

@@ -1,4 +1,4 @@
-package pl.dtokarzewski.data
+package pl.inpost.shipmentlist.data.data
 
 /**
  * Order of statuses - higher number = higher priority

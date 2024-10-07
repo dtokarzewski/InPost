@@ -18,7 +18,6 @@ rootProject.name = "InPost Recruitment Task"
 
 include(":app")
 include(":core:designsystem")
-include(":data:model")
 include(":feature:shipmentlist")
 include(":data:network")
 include(":domain:model")

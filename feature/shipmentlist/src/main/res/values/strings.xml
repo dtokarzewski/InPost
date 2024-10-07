@@ -5,6 +5,7 @@
     <string name="label_parcel_status">Status</string>
     <string name="label_sender">Sender</string>
     <string name="label_delivered">Delivered</string>
+    <string name="label_stored">Stored</string>
     <string name="label_awaiting">Awaiting collection until</string>
     <string name="label_more">more</string>
 
