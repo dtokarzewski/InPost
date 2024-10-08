@@ -34,15 +34,19 @@ import pl.inpost.shipmentlist.data.model.testdata.shipmentUiTestData
 @Composable
 internal fun ShipmentCard(
     shipment: ShipmentUi,
-    onMoreClicked: () -> Unit,
-    onHideClicked: () -> Unit,
+    onMoreClicked: (String) -> Unit,
+    onHideClicked: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     ElevatedCard(
-        onClick = onMoreClicked,
+        onClick = { onMoreClicked(shipment.number) },
         shape = RectangleShape,
-        elevation = CardDefaults.elevatedCardElevation(),
-        modifier = modifier.wrapContentSize(),
+        elevation = CardDefaults.elevatedCardElevation(
+            defaultElevation = 8.dp
+        ),
+        modifier = modifier
+            .wrapContentSize()
+            .padding(vertical = 8.dp),
     ) {
         Column(
             modifier = Modifier.padding(
