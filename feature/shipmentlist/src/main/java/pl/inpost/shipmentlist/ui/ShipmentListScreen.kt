@@ -1,5 +1,6 @@
 package pl.inpost.shipmentlist.ui
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -15,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import pl.inpost.designsystem.InPostTheme
 import pl.inpost.shipmentlist.R
+import pl.inpost.shipmentlist.data.model.testdata.shipmentListUiTestData
 import pl.inpost.shipmentlist.data.model.testdata.shipmentUiTestData
 import pl.inpost.shipmentlist.ui.component.ShipmentCard
 
@@ -54,7 +56,9 @@ internal fun ShipmentScreen(
         },
     ) {
         LazyColumn(
-            modifier = Modifier.padding(it),
+            modifier = Modifier
+                .padding(it)
+                .fillMaxSize(),
         ) {
             items(
                 count = uiState.shipments.size,
@@ -78,7 +82,7 @@ private fun ShipmentScreenPreview() {
     InPostTheme {
         ShipmentScreen(
             uiState = ShipmentListState.Loaded(
-                shipments = listOf(shipmentUiTestData()),
+                shipments = shipmentListUiTestData(),
                 refreshState = RefreshState.Idle,
                 error = null,
             ),
