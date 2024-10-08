@@ -32,6 +32,8 @@ android {
 dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":feature:shipmentlist:data"))
+    implementation(project(":domain"))
+    implementation(project(":domain:data"))
 
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
@@ -47,7 +49,5 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.timber)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(project(":core:test"))
 }

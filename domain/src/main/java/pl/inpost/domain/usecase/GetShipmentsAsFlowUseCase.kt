@@ -5,9 +5,9 @@ import pl.inpost.domain.data.Shipment
 import pl.inpost.domain.repository.ShipmentRepository
 import javax.inject.Inject
 
-class GetHighlightedShipmentsAsFlowUseCase @Inject constructor(
+class GetShipmentsAsFlowUseCase @Inject constructor(
     private val shipmentRepository: ShipmentRepository,
 ) {
     operator fun invoke(): Flow<List<Shipment>> =
-        shipmentRepository.getHighlightedShipmentsAsFlow()
+        shipmentRepository.getShipmentsAsFlow()
 }

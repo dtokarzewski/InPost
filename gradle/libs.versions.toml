@@ -9,9 +9,12 @@ androidxComposeBom = "2024.09.03"
 androidxCore = "1.13.1"
 androidxLifecycle = "2.8.6"
 androidxNavigation = "2.8.2"
+espressoCore = "3.6.1"
 hilt = "2.51.1"
 hiltExt = "1.2.0"
 hiltNavigationCompose = "1.2.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
 kotlin = "2.0.20"
 kotlinxCoroutines = "1.8.0"
 kotlinxSerializationJson = "1.6.3"
@@ -21,9 +24,7 @@ mockk = "1.13.12"
 moshiKotlin = "1.13.0"
 room = "2.6.1"
 timber = "5.0.1"
-junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
+turbine = "1.1.0"
 
 [libraries]
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
@@ -58,6 +59,7 @@ timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "tim
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
