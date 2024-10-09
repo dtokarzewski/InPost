@@ -24,7 +24,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import pl.inpost.designsystem.InPostTheme
 import pl.inpost.designsystem.LightGray
 import pl.inpost.shipmentlist.R
-import pl.inpost.shipmentlist.data.model.testdata.shipmentListUiTestData
+import pl.inpost.shipmentlist.data.model.testdata.shipmentsUiTestData
 import pl.inpost.shipmentlist.ui.component.ShipmentCard
 
 @Composable
@@ -163,7 +163,7 @@ private fun ShipmentScreenPreview() {
     InPostTheme {
         ShipmentScreen(
             uiState = ShipmentListState.Loaded(
-                shipments = shipmentListUiTestData(),
+                shipments = shipmentsUiTestData(),
                 refreshState = RefreshState.Idle,
                 error = null,
             ),

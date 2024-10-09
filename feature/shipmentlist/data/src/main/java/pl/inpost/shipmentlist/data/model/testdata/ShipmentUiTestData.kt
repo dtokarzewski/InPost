@@ -5,7 +5,7 @@ import pl.inpost.shipmentlist.data.model.ShipmentStatusUi
 import pl.inpost.shipmentlist.data.model.ShipmentTypeUi
 import pl.inpost.shipmentlist.data.model.ShipmentUi
 
-fun shipmentListUiTestData() = listOf(
+fun shipmentsUiTestData() = listOf(
     ShipmentUi(
         number = "16730345345597442248333",
         shipmentType = ShipmentTypeUi.PARCEL_LOCKER,
@@ -46,4 +46,4 @@ fun shipmentListUiTestData() = listOf(
     ),
 )
 
-fun shipmentUiTestData() = shipmentListUiTestData().first()
+fun shipmentUiTestData() = shipmentsUiTestData().first()

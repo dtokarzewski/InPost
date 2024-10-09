@@ -9,6 +9,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import pl.inpost.domain.data.testdata.shipmentTestData
+import pl.inpost.domain.data.testdata.shipmentsTestData
 import pl.inpost.domain.repository.ShipmentRepository
 import java.io.IOException
 
@@ -23,7 +24,7 @@ class GetShipmentsAsFlowUseCaseTest {
 
     @Test
     fun `GIVEN useCase WHEN invoke with success result THEN return flow of shipments`() = runTest {
-        every { shipmentRepository.getShipmentsAsFlow() } returns flowOf(listOf(shipmentTestData()))
+        every { shipmentRepository.getShipmentsAsFlow() } returns flowOf(shipmentsTestData())
 
         val expected = listOf(shipmentTestData())
 
