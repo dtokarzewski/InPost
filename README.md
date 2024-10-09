@@ -1,5 +1,14 @@
 # InPost Recruitment Task
 
+## TODO
+- Add pull to refresh
+- Refactor activity and fragment to run ShipmentListScreen
+- Add repo implementation and DI setup for it in :data module
+- Add WorkManager for cyclical data refreshing in :data module
+- Add LocalDataSource with Room in :data:database module. Implement proper items sorting in query
+- Move network code to RemoteDataSource in :data:network module
+- Add screenshot tests
+- Update README with screenshots, project description and architecture decisions explanation (i.ex. why dummy UseCases)
 
 ## Intro
 We travel back in time ⏱️. InPost Mobile app was just created and you join the team to improve its feature set and make it ready for the future.
