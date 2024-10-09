@@ -25,7 +25,7 @@ fun shipmentListUiTestData() = listOf(
         expiryDate = "tue. | 29.11.22 | 04:56",
         storedDate = "tue. | 29.11.22 | 04:56",
         pickUpDate = null,
-        dateDisplayType = ShipmentDisplayDateTypeUi.EXPIRY_DATE,
+        dateDisplayType = ShipmentDisplayDateTypeUi.NONE,
         receiver = receiverUiTestData(),
         sender = senderUiTestData().copy(name = "x-kom.pl"),
         operations = operationsUiTestData(),
@@ -40,7 +40,9 @@ fun shipmentListUiTestData() = listOf(
         dateDisplayType = ShipmentDisplayDateTypeUi.EXPIRY_DATE,
         receiver = receiverUiTestData(),
         sender = senderUiTestData().copy(name = "Offy"),
-        operations = operationsUiTestData(),
+        operations = operationsUiTestData().copy(
+            highlight = false,
+        ),
     ),
 )
 

@@ -8,14 +8,16 @@ import androidx.compose.ui.graphics.Color
 private val inPostColorScheme = lightColorScheme(
     primary = Yellow,
     onPrimary = Color.White,
-    surface = LightGray,
+    background = LighterGray,
+    onBackground = Gray,
+    surface = Color.White,
     surfaceVariant = Color.White,
     surfaceContainer = Color.White,
     surfaceContainerLow = Color.White,
-    onSurface = DarkGray,
-    onSurfaceVariant = MediumGray,
+    onSurface = DarkerGray,
+    onSurfaceVariant = DarkGray,
     primaryContainer = Color.White,
-    onPrimaryContainer = DarkGray,
+    onPrimaryContainer = DarkerGray,
     error = Color.Red
 )
 

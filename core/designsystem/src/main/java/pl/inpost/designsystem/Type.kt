@@ -31,7 +31,7 @@ val typography = Typography(
         fontSize = 13.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.4.sp,
-        color = MediumGray,
+        color = DarkGray,
     ),
     bodyMedium = TextStyle(
         fontFamily = montserratFamily,
@@ -61,6 +61,6 @@ val typography = Typography(
         fontSize = 11.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.4.sp,
-        color = MediumGray,
+        color = DarkGray,
     )
 )
