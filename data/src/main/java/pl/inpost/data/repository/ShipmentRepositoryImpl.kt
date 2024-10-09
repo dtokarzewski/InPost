@@ -22,10 +22,10 @@ class ShipmentRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun refreshShipments(): Result<Unit> {
+    override suspend fun refreshShipments() {
         return withContext(Dispatchers.IO) {
-            remoteDataSource.getShipments()
-                .mapCatching { localDataSource.saveShipments(it) }
+            val shipments = remoteDataSource.getShipments()
+            localDataSource.saveShipments(shipments)
         }
     }
 }

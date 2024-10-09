@@ -49,7 +49,8 @@ class ShipmentListViewModel @Inject constructor(
 
     // TODO add success SnackBar
     fun hideShipment(shipmentNumber: String) {
-        viewModelScope.launch(exceptionHandler) { coroutineContext
+        viewModelScope.launch(exceptionHandler) {
+            coroutineContext
             hideShipmentUseCase(shipmentNumber)
         }
     }
@@ -57,13 +58,13 @@ class ShipmentListViewModel @Inject constructor(
     fun refresh() {
         refreshState.value = RefreshState.Refreshing
         viewModelScope.launch {
-            refreshShipmentsUseCase()
-                .onSuccess {
-                    refreshState.value = RefreshState.Idle
-                }
-                .onFailure {
-                    refreshState.value = RefreshState.Error(it)
-                }
+            runCatching {
+                refreshShipmentsUseCase()
+            }.onSuccess {
+                refreshState.value = RefreshState.Idle
+            }.onFailure {
+                refreshState.value = RefreshState.Error(it)
+            }
         }
     }
 

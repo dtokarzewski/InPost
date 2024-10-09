@@ -1,4 +1,4 @@
-package pl.inpost.data.network
+package pl.inpost.data.network.typeadapter
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson

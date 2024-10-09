@@ -6,10 +6,10 @@ import pl.inpost.common.AppInitializer
 import javax.inject.Inject
 
 @HiltAndroidApp
-class InPostRecruitmentTaskApp : Application() {
+open class InPostRecruitmentTaskApp : Application() {
 
     @Inject
-    private lateinit var initializers: Set<@JvmSuppressWildcards AppInitializer>
+    lateinit var initializers: Set<@JvmSuppressWildcards AppInitializer>
 
     override fun onCreate() {
         super.onCreate()

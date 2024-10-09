@@ -3,6 +3,7 @@ package pl.inpost.shipmentlist.ui
 import app.cash.turbine.test
 import io.mockk.clearAllMocks
 import io.mockk.coEvery
+import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
@@ -120,7 +121,7 @@ class ShipmentListViewModelTest {
     @Test
     fun `GIVEN viewModel in Loaded state WHEN refresh called THEN show refresh progress and hide after success`() =
         runTest {
-            coEvery { refreshShipmentsUseCase() } returns Result.success(Unit)
+            coJustRun { refreshShipmentsUseCase() }
 
             sut.uiState.test {
                 assertEquals(idleState, awaitItem())
@@ -135,7 +136,7 @@ class ShipmentListViewModelTest {
     @Test
     fun `GIVEN viewModel in Loaded state WHEN refresh called with error result THEN show refresh progress and error after failure`() =
         runTest {
-            coEvery { refreshShipmentsUseCase() } returns Result.failure(refreshException)
+            coEvery { refreshShipmentsUseCase() } throws refreshException
 
             sut.uiState.test {
                 assertEquals(idleState, awaitItem())
@@ -150,7 +151,7 @@ class ShipmentListViewModelTest {
     @Test
     fun `GIVEN viewModel in Loaded state with refresh error WHEN clearRefreshError called THEN hide refresh error`() =
         runTest {
-            coEvery { refreshShipmentsUseCase() } returns Result.failure(refreshException)
+            coEvery { refreshShipmentsUseCase() } throws refreshException
 
             sut.refresh()
 

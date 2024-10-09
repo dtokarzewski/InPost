@@ -63,35 +63,31 @@ class ShipmentRepositoryImplTest {
 
     @Test
     fun `GIVEN repository WHEN refreshShipments called and remoteDataSource returns success THEN return success result`() = runTest {
-        coEvery { remoteDataSource.getShipments() } returns Result.success(shipmentsTestData())
+        coEvery { remoteDataSource.getShipments() } returns shipmentsTestData()
         coJustRun { localDataSource.saveShipments(any()) }
 
         val result = sut.refreshShipments()
 
-        assertEquals(Result.success(Unit), result)
+        assertEquals(Unit, result)
 
         coVerify(exactly = 1) { remoteDataSource.getShipments() }
         coVerify(exactly = 1) { localDataSource.saveShipments(shipmentsTestData()) }
     }
 
-    @Test
+    @Test(expected = IOException::class)
     fun `GIVEN repository WHEN refreshShipments called and remoteDataSource returns failure THEN return failure result`() = runTest {
         val exception = IOException("Failed to refresh shipments")
-        coEvery { remoteDataSource.getShipments() } returns Result.failure(exception)
+        coEvery { remoteDataSource.getShipments() } throws  exception
 
-        val result = sut.refreshShipments()
-
-        assertEquals(Result.failure<Unit>(exception), result)
+        sut.refreshShipments()
     }
 
-    @Test
+    @Test(expected = IOException::class)
     fun `GIVEN repository WHEN refreshShipments called and localDataSource throws exception THEN return failure result`() = runTest {
         val exception = IOException("Failed to save shipments")
-        coEvery { remoteDataSource.getShipments() } returns Result.success(shipmentsTestData())
+        coEvery { remoteDataSource.getShipments() } returns shipmentsTestData()
         coEvery { localDataSource.saveShipments(any()) } throws exception
 
-        val result = sut.refreshShipments()
-
-        assertEquals(Result.failure<Unit>(exception), result)
+        sut.refreshShipments()
     }
 }

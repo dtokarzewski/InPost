@@ -1,6 +1,6 @@
 package pl.inpost.data.network.model
 
-enum class ShipmentType {
+enum class ShipmentTypeNetwork {
     PARCEL_LOCKER,
     COURIER;
 }

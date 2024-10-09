@@ -16,7 +16,7 @@ package pl.inpost.data.network.model
  * 12. READY_TO_PICKUP
  * 13. PICKUP_TIME_EXPIRED
  */
-enum class ShipmentStatus {
+enum class ShipmentStatusNetwork {
     CREATED,
     CONFIRMED,
     ADOPTED_AT_SOURCE_BRANCH,
