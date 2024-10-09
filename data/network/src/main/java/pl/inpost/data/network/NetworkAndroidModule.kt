@@ -1,4 +1,4 @@
-package pl.inpost.recruitmenttask.network
+package pl.inpost.data.network
 
 import android.content.Context
 import dagger.Module
@@ -6,8 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import pl.inpost.recruitmenttask.network.api.MockShipmentApi
-import pl.inpost.recruitmenttask.network.api.ShipmentApi
+import pl.inpost.data.network.api.MockShipmentApi
+import pl.inpost.data.network.api.ShipmentApi
 
 @InstallIn(SingletonComponent::class)
 @Module

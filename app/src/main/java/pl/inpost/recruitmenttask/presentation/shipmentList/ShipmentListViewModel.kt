@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import pl.inpost.recruitmenttask.network.api.ShipmentApi
-import pl.inpost.recruitmenttask.network.model.ShipmentNetwork
+import pl.inpost.data.network.api.ShipmentApi
+import pl.inpost.data.network.model.ShipmentNetwork
 import pl.inpost.recruitmenttask.util.setState
 import javax.inject.Inject
 

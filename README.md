@@ -9,6 +9,7 @@
 - Move network code to RemoteDataSource in :data:network module
 - Add screenshot tests
 - Update README with screenshots, project description and architecture decisions explanation (i.ex. why dummy UseCases)
+- Add polish translations to shipmentlist module
 
 ## Intro
 We travel back in time ⏱️. InPost Mobile app was just created and you join the team to improve its feature set and make it ready for the future.

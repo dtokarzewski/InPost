@@ -42,6 +42,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     implementation(project(":core:common"))
+    implementation(project(":data:network"))
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.compose.runtime)
@@ -53,7 +54,6 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    implementation(libs.moshi.kotlin)
     implementation(libs.timber)
 
     kspAndroidTest(libs.hilt.compiler)

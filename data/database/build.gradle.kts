@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "pl.inPost.data.network"
+    namespace = "pl.inPost.data.database"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -32,7 +32,8 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    implementation(libs.moshi.kotlin)
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
 
     testImplementation(project(":core:test"))
 }
