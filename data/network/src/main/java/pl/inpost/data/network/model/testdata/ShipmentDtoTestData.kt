@@ -1,8 +1,10 @@
-package pl.inpost.network.model.testdata
+package pl.inpost.data.network.model.testdata
 
-import pl.inpost.network.model.EventLogDto
-import pl.inpost.network.model.OperationsDto
-import pl.inpost.network.model.ShipmentDto
+import pl.inpost.data.network.model.EventLogDto
+import pl.inpost.data.network.model.OperationsDto
+import pl.inpost.data.network.model.ShipmentDto
+import pl.inpost.data.network.model.testdata.receiverDtoTestData
+import pl.inpost.data.network.model.testdata.senderDtoTestData
 import java.time.ZonedDateTime
 
 fun shipmentDtoTestData() = ShipmentDto(

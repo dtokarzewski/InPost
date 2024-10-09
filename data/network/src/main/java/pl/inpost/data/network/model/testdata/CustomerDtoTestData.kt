@@ -1,6 +1,6 @@
-package pl.inpost.network.model.testdata
+package pl.inpost.data.network.model.testdata
 
-import pl.inpost.network.model.CustomerDto
+import pl.inpost.data.network.model.CustomerDto
 
 fun receiverDtoTestData() = CustomerDto(
     email = "receiver@example.com",

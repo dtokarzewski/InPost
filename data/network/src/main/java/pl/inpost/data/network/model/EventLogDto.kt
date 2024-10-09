@@ -1,4 +1,4 @@
-package pl.inpost.network.model
+package pl.inpost.data.network.model
 
 import java.time.ZonedDateTime
 

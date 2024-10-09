@@ -1,4 +1,4 @@
-package pl.inpost.network.model
+package pl.inpost.data.network.model
 
 enum class ShipmentTypeDto {
     PARCEL_LOCKER,

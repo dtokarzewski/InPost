@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "pl.inPost.data.network"
+    namespace = "pl.inPost.data"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -25,6 +25,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:common"))
+    implementation(project(":data:network"))
+    implementation(project(":domain"))
+    implementation(project(":domain:data"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.kotlinx.coroutines.android)
@@ -32,4 +37,6 @@ dependencies {
     ksp(libs.hilt.compiler)
 
     implementation(libs.timber)
+
+    testImplementation(project(":core:test"))
 }
