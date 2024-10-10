@@ -27,6 +27,7 @@ android {
 dependencies {
     implementation(project(":core:common"))
     implementation(project(":data"))
+    implementation(project(":domain:data"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.kotlinx.coroutines.android)

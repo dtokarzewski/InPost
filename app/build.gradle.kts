@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    implementation(libs.material)
     implementation(libs.timber)
 
     kspAndroidTest(libs.hilt.compiler)

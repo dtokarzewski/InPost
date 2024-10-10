@@ -15,7 +15,7 @@ import pl.inpost.data.network.datasource.FakeShipmentRemoteDataSource
 
 @InstallIn(SingletonComponent::class)
 @Module
-abstract class NetworkAndroidModule {
+abstract class NetworkModule {
 
     companion object {
         @Provides

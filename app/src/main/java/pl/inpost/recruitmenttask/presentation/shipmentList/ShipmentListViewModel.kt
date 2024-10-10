@@ -25,7 +25,7 @@ class ShipmentListViewModel @Inject constructor(
     }
 
     private fun refreshData() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.Main) {
             val shipments = shipmentApi.getShipments()
             mutableViewState.setState { shipments }
         }

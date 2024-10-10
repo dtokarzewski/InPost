@@ -15,6 +15,7 @@ class ShipmentNetworkMapper @Inject constructor(
     fun toDomain(shipmentNetwork: ShipmentNetwork) = Shipment(
         number = shipmentNetwork.number,
         shipmentType = shipmentTypeNetworkMapper.toDomain(shipmentNetwork.shipmentType),
+        // When new status not supported by the app occurs, apply default value OTHER
         status = shipmentNetwork.status?.let { shipmentStatusNetworkMapper.toDomain(it) }
             ?: ShipmentStatus.OTHER,
         eventLog = shipmentNetwork.eventLog.map { eventLogNetworkMapper.toDomain(it) },
