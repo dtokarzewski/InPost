@@ -19,7 +19,7 @@ kotlin = "2.0.20"
 kotlinxCoroutines = "1.8.0"
 kotlinxSerializationJson = "1.6.3"
 ksp = "2.0.20-1.0.24"
-material3 = "1.12.0"
+material = "1.12.0"
 mockk = "1.13.12"
 moshiKotlin = "1.13.0"
 room = "2.6.1"
@@ -49,7 +49,7 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 
-material = { group = "com.google.android.material", name = "material", version.ref = "material3" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk"}
 mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk"}
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlin" }

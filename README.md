@@ -1,10 +1,8 @@
 # InPost Recruitment Task
 
 ## TODO
-- Add pull to refresh
 - Refactor activity and fragment to run ShipmentListScreen
 - Add WorkManager for cyclical data refreshing in :data module
-- Add LocalDataSource with Room in :data:database module. Implement proper items sorting in query
 - Add screenshot tests
 - Update README with screenshots, project description and architecture decisions explanation (i.ex. why dummy UseCases)
 - Add polish translations to shipmentlist module

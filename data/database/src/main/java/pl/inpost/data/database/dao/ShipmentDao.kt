@@ -19,7 +19,7 @@ interface ShipmentDao {
     @Query("SELECT * FROM shipment")
     fun getAllShipments(): Flow<List<PopulatedShipmentDb>>
 
-    @Query("SELECT * FROM shipment WHERE isHidden = 0")
+    @Query("SELECT * FROM shipment WHERE isHidden = 0 ORDER BY operations.highlight DESC, status DESC, pickUpDate DESC, expiryDate DESC, storedDate DESC, shipmentNumber ASC")
     fun getAllUnhiddenShipments(): Flow<List<PopulatedShipmentDb>>
 
     @Query("UPDATE shipment SET isHidden = 1 WHERE shipmentNumber = :shipmentNumber")

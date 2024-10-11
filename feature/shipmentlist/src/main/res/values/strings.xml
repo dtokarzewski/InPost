@@ -27,4 +27,7 @@
     <string name="menu_ready_to_pickup">Ready to collect</string>
     <string name="menu_other">Other</string>
     <string name="menu_all">All</string>
+
+    <string name="error_general">Oops! Something went wrong.</string>
+    <string name="error_refresh_failed">Failed to refresh. Please try again later.</string>
 </resources>
