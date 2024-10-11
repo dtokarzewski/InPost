@@ -14,6 +14,7 @@ import pl.inpost.domain.usecase.GetShipmentsAsFlowUseCase
 import pl.inpost.domain.usecase.HideShipmentUseCase
 import pl.inpost.domain.usecase.RefreshShipmentsUseCase
 import pl.inpost.shipmentlist.data.mapper.ShipmentUiMapper
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,6 +29,7 @@ class ShipmentListViewModel @Inject constructor(
     private val error = MutableStateFlow<Throwable?>(null)
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        Timber.e(throwable)
         error.value = throwable
     }
 
@@ -63,6 +65,7 @@ class ShipmentListViewModel @Inject constructor(
             }.onSuccess {
                 refreshState.value = RefreshState.Idle
             }.onFailure {
+                Timber.e(it)
                 refreshState.value = RefreshState.Error(it)
             }
         }

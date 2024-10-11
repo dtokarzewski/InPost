@@ -10,10 +10,10 @@ import pl.inpost.data.database.model.CustomerDb
 interface CustomerDao {
 
     @Upsert
-    suspend fun upsert(customer: CustomerDb): Int
+    suspend fun upsert(customer: CustomerDb): Long
 
     @Upsert
-    suspend fun upsertAll(customers: List<CustomerDb>): List<Int>
+    suspend fun upsertAll(customers: List<CustomerDb>): List<Long>
 
     @Query("SELECT * FROM customer WHERE email = :email")
     fun getCustomerByEmail(email: String): Flow<CustomerDb>

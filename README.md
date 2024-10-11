@@ -1,7 +1,7 @@
 # InPost Recruitment Task
 
 ## TODO
-- Refactor activity and fragment to run ShipmentListScreen
+- Add hiding shipment mechanism to ShipmentCard
 - Add WorkManager for cyclical data refreshing in :data module
 - Add screenshot tests
 - Update README with screenshots, project description and architecture decisions explanation (i.ex. why dummy UseCases)

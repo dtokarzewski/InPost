@@ -35,14 +35,12 @@ android {
 }
 
 dependencies {
-    // TODO remove after migration to Compose
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-    implementation("androidx.fragment:fragment-ktx:1.5.4")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-
     implementation(project(":core:common"))
+    implementation(project(":core:designsystem"))
+    implementation(project(":data"))
+    implementation(project(":data:database"))
     implementation(project(":data:network"))
+    implementation(project(":feature:shipmentlist"))
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.compose.runtime)

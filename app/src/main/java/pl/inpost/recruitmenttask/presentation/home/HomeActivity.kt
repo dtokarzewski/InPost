@@ -1,21 +1,21 @@
 package pl.inpost.recruitmenttask.presentation.home
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import dagger.hilt.android.AndroidEntryPoint
-import pl.inpost.recruitmenttask.R
-import pl.inpost.recruitmenttask.presentation.shipmentList.ShipmentListFragment
+import pl.inpost.designsystem.InPostTheme
+import pl.inpost.shipmentlist.ui.ShipmentScreen
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, ShipmentListFragment.newInstance())
-                .commitNow()
+        setContent {
+            InPostTheme {
+                ShipmentScreen()
+            }
         }
     }
 }

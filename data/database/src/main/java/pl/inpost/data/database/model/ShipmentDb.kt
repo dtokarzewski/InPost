@@ -17,9 +17,9 @@ data class ShipmentDb(
     val expiryDate: ZonedDateTime?,
     val storedDate: ZonedDateTime?,
     val pickUpDate: ZonedDateTime?,
-    val receiverId: Int?,
-    val senderId: Int?,
+    val receiverId: Long?,
+    val senderId: Long?,
     val isHidden: Boolean,
-    @Embedded
+    @Embedded(prefix = "operations_")
     val operations: OperationsDb,
 )

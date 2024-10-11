@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey
 )
 data class CustomerDb(
     @PrimaryKey(autoGenerate = true)
-    val customerId: Int = 0,
+    val customerId: Long = 0,
     val email: String?,
     val phoneNumber: String?,
     val name: String?
