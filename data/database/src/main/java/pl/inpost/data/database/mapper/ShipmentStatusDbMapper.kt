@@ -20,4 +20,20 @@ class ShipmentStatusDbMapper @Inject constructor() {
         ShipmentStatusDb.READY_TO_PICKUP -> ShipmentStatus.READY_TO_PICKUP
         ShipmentStatusDb.RETURNED_TO_SENDER -> ShipmentStatus.RETURNED_TO_SENDER
     }
+
+    fun toEntity(status: ShipmentStatus) = when (status) {
+        ShipmentStatus.ADOPTED_AT_SORTING_CENTER -> ShipmentStatusDb.ADOPTED_AT_SORTING_CENTER
+        ShipmentStatus.SENT_FROM_SORTING_CENTER -> ShipmentStatusDb.SENT_FROM_SORTING_CENTER
+        ShipmentStatus.ADOPTED_AT_SOURCE_BRANCH -> ShipmentStatusDb.ADOPTED_AT_SOURCE_BRANCH
+        ShipmentStatus.SENT_FROM_SOURCE_BRANCH -> ShipmentStatusDb.SENT_FROM_SOURCE_BRANCH
+        ShipmentStatus.AVIZO -> ShipmentStatusDb.AVIZO
+        ShipmentStatus.CONFIRMED -> ShipmentStatusDb.CONFIRMED
+        ShipmentStatus.CREATED -> ShipmentStatusDb.CREATED
+        ShipmentStatus.DELIVERED -> ShipmentStatusDb.DELIVERED
+        ShipmentStatus.OTHER -> ShipmentStatusDb.OTHER
+        ShipmentStatus.OUT_FOR_DELIVERY -> ShipmentStatusDb.OUT_FOR_DELIVERY
+        ShipmentStatus.PICKUP_TIME_EXPIRED -> ShipmentStatusDb.PICKUP_TIME_EXPIRED
+        ShipmentStatus.READY_TO_PICKUP -> ShipmentStatusDb.READY_TO_PICKUP
+        ShipmentStatus.RETURNED_TO_SENDER -> ShipmentStatusDb.RETURNED_TO_SENDER
+    }
 }

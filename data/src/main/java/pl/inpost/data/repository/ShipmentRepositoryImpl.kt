@@ -14,7 +14,7 @@ class ShipmentRepositoryImpl @Inject constructor(
     private val localDataSource: ShipmentLocalDataSource
 ) : ShipmentRepository {
 
-    override fun getShipmentsAsFlow(): Flow<List<Shipment>> = localDataSource.getShipmentsAsFlow()
+    override fun getShipmentsAsFlow(): Flow<List<Shipment>> = localDataSource.getUnhiddenShipmentsAsFlow()
 
     override suspend fun hideShipment(shipmentNumber: String) {
         withContext(Dispatchers.IO) {

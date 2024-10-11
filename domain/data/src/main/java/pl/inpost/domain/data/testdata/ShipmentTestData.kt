@@ -30,7 +30,8 @@ fun shipmentsTestData(): List<Shipment> = listOf(
         storedDate = ZonedDateTime.parse("2022-11-29T04:56:07Z"),
         pickUpDate = null,
         receiver = receiverTestData(),
-        sender = senderTestData().copy(name = "x-kom.pl"),
+        sender = senderTestData(),
+        isHidden = false,
         operations = operationsTestData(),
     ),
     Shipment(
@@ -49,6 +50,7 @@ fun shipmentsTestData(): List<Shipment> = listOf(
         pickUpDate = null,
         receiver = receiverTestData(),
         sender = senderTestData().copy(name = "Offy"),
+        isHidden = false,
         operations = operationsTestData().copy(
             highlight = false,
         ),
@@ -77,6 +79,7 @@ fun shipmentsTestData(): List<Shipment> = listOf(
         pickUpDate = null,
         receiver = receiverTestData(),
         sender = senderTestData(),
+        isHidden = false,
         operations = operationsTestData(),
     )
 )

@@ -28,7 +28,7 @@ class ShipmentRepositoryImplTest {
 
     @Test
     fun `GIVEN repository WHEN getShipmentsAsFlow called and data source returns success THEN return flow result`() = runTest {
-        every { localDataSource.getShipmentsAsFlow() } returns flowOf(shipmentsTestData())
+        every { localDataSource.getUnhiddenShipmentsAsFlow() } returns flowOf(shipmentsTestData())
 
         val expected = shipmentsTestData()
 
@@ -40,7 +40,7 @@ class ShipmentRepositoryImplTest {
 
     @Test(expected = IOException::class)
     fun `GIVEN repository WHEN getShipmentsAsFlow called and data source throws exception THEN rethrow exception`() = runTest {
-        every { localDataSource.getShipmentsAsFlow() } throws IOException("Failed to get shipments")
+        every { localDataSource.getUnhiddenShipmentsAsFlow() } throws IOException("Failed to get shipments")
 
         sut.getShipmentsAsFlow()
     }

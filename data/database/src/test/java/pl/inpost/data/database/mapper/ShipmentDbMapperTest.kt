@@ -1,10 +1,9 @@
 package pl.inpost.data.database.mapper
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import pl.inpost.data.database.model.testdata.shipmentDbTestData
-import pl.inpost.data.network.mapper.EventLogDbMapper
+import pl.inpost.data.database.model.testdata.populatedShipmentDbTestData
 import pl.inpost.data.network.mapper.ShipmentTypeDbMapper
 import pl.inpost.domain.data.testdata.shipmentTestData
 
@@ -24,7 +23,7 @@ class ShipmentDbMapperTest {
 
     @Test
     fun `GIVEN ShipmentDb WHEN mapped to Domain THEN return Shipment`() {
-        val input = shipmentDbTestData()
+        val input = populatedShipmentDbTestData()
         val expected = shipmentTestData()
 
         val actual = sut.toDomain(input)

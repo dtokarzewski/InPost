@@ -30,7 +30,7 @@ fun shipmentsNetworkTestData(): List<ShipmentNetwork> = listOf(
         storedDate = ZonedDateTime.parse("2022-11-29T04:56:07Z"),
         pickUpDate = null,
         receiver = receiverNetworkTestData(),
-        sender = senderNetworkTestData().copy(name = "x-kom.pl"),
+        sender = senderNetworkTestData(),
         operations = operationsNetworkTestData(),
     ),
     ShipmentNetwork(

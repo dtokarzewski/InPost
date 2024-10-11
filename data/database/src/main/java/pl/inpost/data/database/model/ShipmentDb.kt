@@ -1,18 +1,25 @@
 package pl.inpost.data.database.model
 
-import pl.inpost.data.network.model.EventLogDb
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.time.ZonedDateTime
 
+@Entity(
+    tableName = "shipment",
+)
 data class ShipmentDb(
-    val number: String,
+    @PrimaryKey
+    val shipmentNumber: String,
     val shipmentType: ShipmentTypeDb,
     val status: ShipmentStatusDb,
-    val eventLog: List<EventLogDb>,
     val openCode: String?,
     val expiryDate: ZonedDateTime?,
     val storedDate: ZonedDateTime?,
     val pickUpDate: ZonedDateTime?,
-    val receiver: CustomerDb?,
-    val sender: CustomerDb?,
-    val operations: OperationsDb
+    val receiverId: Int?,
+    val senderId: Int?,
+    val isHidden: Boolean,
+    @Embedded
+    val operations: OperationsDb,
 )

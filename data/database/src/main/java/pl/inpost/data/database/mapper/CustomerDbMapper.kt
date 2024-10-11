@@ -10,4 +10,10 @@ class CustomerDbMapper @Inject constructor() {
         phoneNumber = customer.phoneNumber,
         name = customer.name
     )
+
+    fun toEntity(customer: Customer) = CustomerDb(
+        email = customer.email,
+        phoneNumber = customer.phoneNumber,
+        name = customer.name
+    )
 }

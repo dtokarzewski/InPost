@@ -12,7 +12,18 @@ class OperationsDbMapper @Inject constructor() {
             collect = collect,
             highlight = highlight,
             expandAvizo = expandAvizo,
-            endOfWeekCollection = endOfWeekCollection
+            endOfWeekCollection = endOfWeekCollection,
+        )
+    }
+
+    fun toEntity(operations: Operations) = with(operations) {
+        OperationsDb(
+            manualArchive = manualArchive,
+            delete = delete,
+            collect = collect,
+            highlight = highlight,
+            expandAvizo = expandAvizo,
+            endOfWeekCollection = endOfWeekCollection,
         )
     }
 }

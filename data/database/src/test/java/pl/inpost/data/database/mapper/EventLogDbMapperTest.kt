@@ -4,7 +4,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import pl.inpost.data.database.model.testdata.eventLogDbTestData
-import pl.inpost.data.network.mapper.EventLogDbMapper
 import pl.inpost.domain.data.testdata.eventLogTestData
 import javax.inject.Inject
 

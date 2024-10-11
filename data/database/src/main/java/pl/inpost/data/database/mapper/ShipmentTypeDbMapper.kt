@@ -10,4 +10,9 @@ class ShipmentTypeDbMapper @Inject constructor() {
         ShipmentTypeDb.COURIER -> ShipmentType.COURIER
     }
 
+    fun toEntity(domain: ShipmentType) = when (domain) {
+        ShipmentType.PARCEL_LOCKER -> ShipmentTypeDb.PARCEL_LOCKER
+        ShipmentType.COURIER -> ShipmentTypeDb.COURIER
+
+    }
 }

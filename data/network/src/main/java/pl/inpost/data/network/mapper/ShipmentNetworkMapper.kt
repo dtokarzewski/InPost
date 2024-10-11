@@ -25,6 +25,7 @@ class ShipmentNetworkMapper @Inject constructor(
         pickUpDate = shipmentNetwork.pickUpDate,
         receiver = shipmentNetwork.receiver?.let { customerNetworkMapper.toDomain(it) },
         sender = shipmentNetwork.sender?.let { customerNetworkMapper.toDomain(it) },
+        isHidden = false,
         operations = operationsNetworkMapper.toDomain(shipmentNetwork.operations),
     )
 }
