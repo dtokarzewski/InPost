@@ -18,6 +18,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
 import androidx.compose.material3.pulltorefresh.pullToRefresh
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
@@ -26,6 +27,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -72,20 +74,22 @@ internal fun ShipmentScreen(
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
-    val state = rememberPullToRefreshState()
+    val pullToRefreshState = rememberPullToRefreshState()
+    val isRefreshing = uiState.refreshState == RefreshState.Refreshing
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.app_name)) },
+                scrollBehavior = scrollBehavior,
             )
         },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         modifier = Modifier
             .fillMaxSize()
             .pullToRefresh(
-                state = state,
-                isRefreshing = uiState.refreshState == RefreshState.Refreshing,
-                onRefresh = onRefresh
+                state = pullToRefreshState,
+                isRefreshing = isRefreshing,
+                onRefresh = onRefresh,
             )
             .nestedScroll(scrollBehavior.nestedScrollConnection)
     ) { innerPadding ->
@@ -124,6 +128,7 @@ internal fun ShipmentScreen(
                             shipment = shipment,
                             onMoreClicked = onMoreClicked,
                             onHideClicked = onHideShipment,
+                            modifier = Modifier.animateItem()
                         )
                     }
                     if (otherShipments.isNotEmpty()) {
@@ -171,6 +176,13 @@ internal fun ShipmentScreen(
                         .wrapContentSize(align = Center),
                 )
             }
+
+
+            PullToRefreshDefaults.Indicator(
+                state = pullToRefreshState,
+                isRefreshing = isRefreshing,
+                modifier = Modifier.align(TopCenter)
+            )
         }
     }
 }

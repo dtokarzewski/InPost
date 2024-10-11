@@ -24,7 +24,7 @@ class RoomShipmentLocalDataSource @Inject constructor(
 ) : ShipmentLocalDataSource {
     override fun getUnhiddenShipmentsAsFlow(): Flow<List<Shipment>> =
         shipmentDao
-            .getAllUnhiddenShipments()
+            .getAllUnhiddenPopulatedShipments()
             .map { shipments -> shipments.map { shipmentDbMapper.toDomain(it) } }
 
     override suspend fun hideShipment(shipmentNumber: String) {
@@ -43,6 +43,12 @@ class RoomShipmentLocalDataSource @Inject constructor(
                 val receiverId = receiverDb?.let { customerDao.upsert(it) } ?: 0
 
                 var shipmentDb = shipmentDbMapper.toEntity(shipment)
+
+                /* Update isHidden flag with value from DB. API doesn't return this value, so domain
+                *  model always return false, after network -> domain model mapping. */
+                val isHidden = shipmentDao.verifyIfShipmentIsHidden(shipment.number)
+                shipmentDb = shipmentDb.copy(isHidden = isHidden ?: false)
+
                 shipmentDb = shipmentDb.copy(
                     senderId = senderId,
                     receiverId = receiverId,

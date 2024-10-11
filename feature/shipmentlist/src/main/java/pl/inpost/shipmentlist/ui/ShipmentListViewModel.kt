@@ -49,7 +49,6 @@ class ShipmentListViewModel @Inject constructor(
         initialValue = ShipmentListState.Loading,
     )
 
-    // TODO add success SnackBar
     fun hideShipment(shipmentNumber: String) {
         viewModelScope.launch(exceptionHandler) {
             coroutineContext

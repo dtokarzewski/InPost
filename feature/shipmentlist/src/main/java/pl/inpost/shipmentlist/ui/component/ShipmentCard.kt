@@ -1,23 +1,36 @@
 package pl.inpost.shipmentlist.ui.component
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.SwipeToDismissBox
+import androidx.compose.material3.SwipeToDismissBoxState
+import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -39,33 +52,49 @@ internal fun ShipmentCard(
     onHideClicked: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    ElevatedCard(
-        onClick = { onMoreClicked(shipment.number) },
-        shape = RectangleShape,
-        elevation = CardDefaults.elevatedCardElevation(
-            defaultElevation = 8.dp
-        ),
+    val dismissState = rememberSwipeToDismissBoxState(
+        confirmValueChange = {
+            if (it == SwipeToDismissBoxValue.StartToEnd || it == SwipeToDismissBoxValue.EndToStart) {
+                onHideClicked(shipment.number)
+                return@rememberSwipeToDismissBoxState true
+            }
+            false
+        }
+    )
+
+    SwipeToDismissContainer(
+        dismissState = dismissState,
+        isEnabled = shipment.operations.manualArchive,
         modifier = modifier
-            .wrapContentSize()
-            .padding(vertical = 8.dp),
+            .padding(vertical = 8.dp)
     ) {
-        Column(
-            modifier = Modifier.padding(
-                horizontal = 20.dp,
-                vertical = 16.dp,
-            )
+        ElevatedCard(
+            onClick = { onMoreClicked(shipment.number) },
+            shape = RectangleShape,
+            elevation = CardDefaults.elevatedCardElevation(
+                defaultElevation = 8.dp
+            ),
+            modifier = modifier
+                .wrapContentSize()
         ) {
-            ShipmentNumber(
-                number = shipment.number,
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            ShipmentStatus(
-                shipment = shipment,
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Sender(
-                sender = shipment.sender,
-            )
+            Column(
+                modifier = Modifier.padding(
+                    horizontal = 20.dp,
+                    vertical = 16.dp,
+                )
+            ) {
+                ShipmentNumber(
+                    number = shipment.number,
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                ShipmentStatus(
+                    shipment = shipment,
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Sender(
+                    sender = shipment.sender,
+                )
+            }
         }
     }
 }
@@ -173,6 +202,47 @@ internal fun ShipmentStatus(
                 )
             }
         }
+    }
+}
+
+@Composable
+internal fun SwipeToDismissContainer(
+    dismissState: SwipeToDismissBoxState,
+    isEnabled: Boolean,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    SwipeToDismissBox(
+        modifier = modifier,
+        enableDismissFromEndToStart = false,
+        enableDismissFromStartToEnd = isEnabled,
+        state = dismissState,
+        backgroundContent = {
+            val color by animateColorAsState(
+                targetValue = when (dismissState.targetValue) {
+                    SwipeToDismissBoxValue.Settled -> Color.LightGray
+                    SwipeToDismissBoxValue.StartToEnd -> Color.Red
+                    SwipeToDismissBoxValue.EndToStart -> Color.Red
+                },
+                label = "ColorAnimation",
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .drawBehind {
+                        drawRect(color)
+                    },
+                contentAlignment = Alignment.CenterStart,
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = null,
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                )
+            }
+        }
+    ) {
+        content()
     }
 }
 
