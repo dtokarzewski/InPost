@@ -34,6 +34,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    implementation(libs.moshi.adapters)
     implementation(libs.moshi.kotlin)
 
     testImplementation(project(":core:test"))

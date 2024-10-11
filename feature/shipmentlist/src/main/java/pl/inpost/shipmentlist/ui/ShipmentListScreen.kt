@@ -17,7 +17,9 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.pulltorefresh.pullToRefresh
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -26,6 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,7 +36,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import pl.inpost.designsystem.InPostTheme
 import pl.inpost.designsystem.LightGray
 import pl.inpost.shipmentlist.R
-import pl.inpost.shipmentlist.data.model.testdata.shipmentsUiTestData
 import pl.inpost.shipmentlist.ui.component.ShipmentCard
 
 @Composable
@@ -69,14 +71,23 @@ internal fun ShipmentScreen(
     onRefreshErrorShown: () -> Unit,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+    val state = rememberPullToRefreshState()
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.app_name)) },
-                modifier = Modifier,
             )
         },
-        snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
+        modifier = Modifier
+            .fillMaxSize()
+            .pullToRefresh(
+                state = state,
+                isRefreshing = uiState.refreshState == RefreshState.Refreshing,
+                onRefresh = onRefresh
+            )
+            .nestedScroll(scrollBehavior.nestedScrollConnection)
     ) { innerPadding ->
         val shipments = uiState.shipments
 
@@ -84,20 +95,18 @@ internal fun ShipmentScreen(
         *  than filtering here. */
         val lastHighlightedIndex =
             shipments.indexOfLast { shipment -> shipment.operations.highlight }
-        val highlightedShipment =
+        val highlightedShipments =
             if (lastHighlightedIndex != -1) shipments.subList(0, lastHighlightedIndex + 1) else null
         val otherShipments = shipments.subList(lastHighlightedIndex + 1, shipments.size)
 
-        PullToRefreshBox(
-            isRefreshing = uiState.refreshState == RefreshState.Refreshing,
-            onRefresh = onRefresh,
+        Box(
             modifier = Modifier.padding(innerPadding),
         ) {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize(),
             ) {
-                highlightedShipment?.let { highlighted ->
+                highlightedShipments?.let { highlighted ->
                     item {
                         Divider(
                             title = stringResource(R.string.menu_ready_to_pickup),
@@ -152,6 +161,15 @@ internal fun ShipmentScreen(
                     )
                     onErrorShown?.invoke()
                 }
+            }
+
+            if (highlightedShipments.isNullOrEmpty() && otherShipments.isEmpty()) {
+                Text(
+                    text = stringResource(R.string.label_nothing_to_collect),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(align = Center),
+                )
             }
         }
     }
@@ -217,7 +235,7 @@ private fun ShipmentScreenPreview() {
     InPostTheme {
         ShipmentScreen(
             uiState = ShipmentListState.Loaded(
-                shipments = shipmentsUiTestData(),
+                shipments = emptyList(),
                 refreshState = RefreshState.Idle,
                 error = null,
             ),

@@ -1,6 +1,7 @@
 package pl.inpost.shipmentlist.ui.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -62,11 +63,9 @@ internal fun ShipmentCard(
                 shipment = shipment,
             )
             Spacer(modifier = Modifier.height(16.dp))
-            shipment.sender?.let {
-                Sender(
-                    sender = it,
-                )
-            }
+            Sender(
+                sender = shipment.sender,
+            )
         }
     }
 }
@@ -179,32 +178,35 @@ internal fun ShipmentStatus(
 
 @Composable
 fun Sender(
-    sender: CustomerUi,
+    sender: CustomerUi?,
 ) {
     Row(
         verticalAlignment = Alignment.Bottom,
+        horizontalArrangement = Arrangement.End,
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight(),
     ) {
-        Column(
-            modifier = Modifier.weight(1f),
-        ) {
-            val senderText = when (sender.displayType) {
-                CustomerDisplayTypeUi.NAME -> sender.name
-                CustomerDisplayTypeUi.EMAIL -> sender.email
-                CustomerDisplayTypeUi.PHONE_NUMBER -> sender.phoneNumber
-                CustomerDisplayTypeUi.NONE -> null
-            }
-            senderText?.let {
-                Text(
-                    text = stringResource(R.string.label_sender).uppercase(),
-                    style = MaterialTheme.typography.labelMedium,
-                )
-                Text(
-                    text = it,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
+        if (sender != null) {
+            Column(
+                modifier = Modifier.weight(1f),
+            ) {
+                val senderText = when (sender.displayType) {
+                    CustomerDisplayTypeUi.NAME -> sender.name
+                    CustomerDisplayTypeUi.EMAIL -> sender.email
+                    CustomerDisplayTypeUi.PHONE_NUMBER -> sender.phoneNumber
+                    CustomerDisplayTypeUi.NONE -> null
+                }
+                senderText?.let {
+                    Text(
+                        text = stringResource(R.string.label_sender).uppercase(),
+                        style = MaterialTheme.typography.labelMedium,
+                    )
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                }
             }
         }
         Text(

@@ -2,7 +2,6 @@ package pl.inpost.data.network.mapper
 
 import pl.inpost.data.network.model.ShipmentNetwork
 import pl.inpost.domain.data.Shipment
-import pl.inpost.domain.data.ShipmentStatus
 import javax.inject.Inject
 
 class ShipmentNetworkMapper @Inject constructor(
@@ -15,9 +14,7 @@ class ShipmentNetworkMapper @Inject constructor(
     fun toDomain(shipmentNetwork: ShipmentNetwork) = Shipment(
         number = shipmentNetwork.number,
         shipmentType = shipmentTypeNetworkMapper.toDomain(shipmentNetwork.shipmentType),
-        // When new status not supported by the app occurs, apply default value OTHER
-        status = shipmentNetwork.status?.let { shipmentStatusNetworkMapper.toDomain(it) }
-            ?: ShipmentStatus.OTHER,
+        status = shipmentStatusNetworkMapper.toDomain(shipmentNetwork.status),
         eventLog = shipmentNetwork.eventLog.map { eventLogNetworkMapper.toDomain(it) },
         openCode = shipmentNetwork.openCode,
         expiryDate = shipmentNetwork.expiryDate,

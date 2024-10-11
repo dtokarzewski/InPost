@@ -2,6 +2,7 @@ package pl.inpost.data.network.api
 
 import android.content.Context
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapters.EnumJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
@@ -30,21 +31,19 @@ class FakeShipmentApi(
         val jsonAdapter = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .add(apiTypeAdapter)
+            .add(ShipmentStatusNetwork::class.java,EnumJsonAdapter
+                .create(ShipmentStatusNetwork::class.java)
+                .withUnknownFallback(ShipmentStatusNetwork.OTHER)
+            )
             .build()
             .adapter(ShipmentsResponse::class.java)
 
         jsonAdapter.fromJson(json) as ShipmentsResponse
     }
-    private var firstUse = true
 
     override suspend fun getShipments(): List<ShipmentNetwork> {
         delay(1000)
-        return if (firstUse) {
-            firstUse = false
-            emptyList()
-        } else {
-            response.shipments
-        }
+        return response.shipments
     }
 }
 

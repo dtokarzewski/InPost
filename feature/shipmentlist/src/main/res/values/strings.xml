@@ -9,6 +9,7 @@
     <string name="label_awaiting">Awaiting collection until</string>
     <string name="label_expired">Expired</string>
     <string name="label_more">more</string>
+    <string name="label_nothing_to_collect">Nothing to collect</string>
 
     <string name="status_adopted_at_sorting_center">Received at Sort Centre</string>
     <string name="status_sent_from_sorting_center">Despatched from Sort Centre</string>

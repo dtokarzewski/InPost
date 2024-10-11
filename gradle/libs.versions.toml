@@ -21,7 +21,7 @@ kotlinxSerializationJson = "1.6.3"
 ksp = "2.0.20-1.0.24"
 material = "1.12.0"
 mockk = "1.13.12"
-moshiKotlin = "1.13.0"
+moshi = "1.13.0"
 room = "2.6.1"
 timber = "5.0.1"
 turbine = "1.1.0"
@@ -52,7 +52,8 @@ kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-cor
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk"}
 mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk"}
-moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlin" }
+moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "moshi" }
+moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
