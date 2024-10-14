@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import dagger.hilt.android.AndroidEntryPoint
 import pl.inpost.designsystem.InPostTheme
-import pl.inpost.shipmentlist.ui.ShipmentScreen
+import pl.inpost.shipmentlist.ui.ShipmentListScreen
 
 @AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
@@ -14,7 +14,7 @@ class HomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             InPostTheme {
-                ShipmentScreen()
+                ShipmentListScreen()
             }
         }
     }

@@ -41,7 +41,7 @@ import pl.inpost.shipmentlist.R
 import pl.inpost.shipmentlist.ui.component.ShipmentCard
 
 @Composable
-fun ShipmentScreen(
+fun ShipmentListScreen(
     viewModel: ShipmentListViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -51,7 +51,7 @@ fun ShipmentScreen(
             ProgressIndicator()
         }
 
-        is ShipmentListState.Loaded -> ShipmentScreen(
+        is ShipmentListState.Loaded -> ShipmentListScreen(
             uiState = state,
             onRefresh = viewModel::refresh,
             onMoreClicked = { /* TODO Implement details screen */ },
@@ -64,7 +64,7 @@ fun ShipmentScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun ShipmentScreen(
+internal fun ShipmentListScreen(
     uiState: ShipmentListState.Loaded,
     onRefresh: () -> Unit,
     onMoreClicked: (String) -> Unit,
@@ -245,7 +245,7 @@ private fun DividerPreview() {
 @Composable
 private fun ShipmentScreenPreview() {
     InPostTheme {
-        ShipmentScreen(
+        ShipmentListScreen(
             uiState = ShipmentListState.Loaded(
                 shipments = emptyList(),
                 refreshState = RefreshState.Idle,
