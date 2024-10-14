@@ -1,7 +1,6 @@
 # InPost Recruitment Task
-===========================================================
 
-This project is sample offline-first, Android app. It's a racruitment task but also, it's designed to be a
+This project is sample offline-first, Android app. It's a recruitment task but also, it's designed to be a
 playground for testing various architecture solutions and new libraries.
 
 ### Building
@@ -12,7 +11,7 @@ No special operations needed - just run project in Android Studio.
 * Screenshot tests - experimental Compose Screenshot library was used to perform screenshot tests.
 It doesn't work well, because it's in Alpha stage, but it's not commercial project, so why not try it :)
 * Instrumented tests - Right there are no instrumented tests. There will be reason for adding them,
-after adding details screen in the future. Instrumented tests, will be helpfull in testing navigation.
+after adding details screen in the future. Instrumented tests, will be helpfully in testing navigation.
 
 ### TODO
 - Add WorkManager for cyclical background data refreshing in :data module - I didn't add it, because
@@ -79,9 +78,10 @@ prepare architecture for this.
 * Has it's own `data` model. Thanks to this approach all transformations of `domain` model 
 (like dates formating) are done in easy to test `Mapper`-s instead of @Composable-s. This gives good
 separation of business logic from UI logic. 
+
 ===========================================================
 
-# Task descricption
+# Task description
 
 ## Intro
 We travel back in time ⏱️. InPost Mobile app was just created and you join the team to improve its feature set and make it ready for the future.
