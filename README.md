@@ -1,5 +1,6 @@
 # InPost Recruitment Task
 ===========================================================
+
 This project is sample offline-first, Android app. It's a racruitment task but also, it's designed to be a
 playground for testing various architecture solutions and new libraries.
 
@@ -13,7 +14,7 @@ It doesn't work well, because it's in Alpha stage, but it's not commercial proje
 * Instrumented tests - Right there are no instrumented tests. There will be reason for adding them,
 after adding details screen in the future. Instrumented tests, will be helpfull in testing navigation.
 
-## TODO
+### TODO
 - Add WorkManager for cyclical background data refreshing in :data module
 - Add polish translations to shipmentlist module
 
@@ -59,7 +60,10 @@ Place for business logic represented by `UseCase`-s, and data model which serves
 truth for entire application. Project follows Clean Architecture principles, so all other modules
 in the app depends on `domain` module.
 
-* `domain` - place for all UseCase's and Repository interfaces
+* `domain` - place for all UseCase's and Repository interfaces. UseCase's are dummy right now - there
+is no business logic except calling repo, but they gives total separation of `ViewModel` from `data` layer.
+When project grows, business logic will appear in some UseCase's and it's better to be consistent and
+prepare architecture for this.
 * `domain:data` - contains main data classes used across the app.
 
 #### UI layer
@@ -70,6 +74,7 @@ in the app depends on `domain` module.
 (like dates formating) are done in easy to test `Mapper`-s instead of @Composable-s. This gives good
 separation of business logic from UI logic. 
 ===========================================================
+
 # Task descricption
 
 ## Intro
