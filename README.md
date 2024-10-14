@@ -8,14 +8,17 @@ playground for testing various architecture solutions and new libraries.
 No special operations needed - just run project in Android Studio.
 
 ### Testing
-* Unit tests - UseCase and ViewModel unit tests for domain layer verification.
+* Unit tests - UseCase-s, ViewModel, Mapper-s, DataSource-s and Repository unit tests for domain layer verification.
 * Screenshot tests - experimental Compose Screenshot library was used to perform screenshot tests.
-It doesn't work well, because it's in Alpha stage, but it's not commercial project, so why not test it :)
+It doesn't work well, because it's in Alpha stage, but it's not commercial project, so why not try it :)
 * Instrumented tests - Right there are no instrumented tests. There will be reason for adding them,
 after adding details screen in the future. Instrumented tests, will be helpfull in testing navigation.
 
 ### TODO
-- Add WorkManager for cyclical background data refreshing in :data module
+- Add WorkManager for cyclical background data refreshing in :data module - I didn't add it, because
+`data:network` fakes network calls, so data will be always the same (except firs call, which simulates
+returning empty shipments list), so it makes no sense to add it. In real project, adding WorkManager
+would be good idea.
 - Add polish translations to shipmentlist module
 
 ### Tech stack
@@ -35,9 +38,12 @@ components/libraries used:
 
 ## Architecture
 Project have multi-module architecture. It's an overkill to make such complex architecture for such
-a small project, but it's goal was to make it as if it was big commercial project.
+a small project, but it's goal was to make it as if it was big commercial project. Structure of the
+project is mix of `per-layer-` and `per-feature-`. There is `feature-xxx` module with it's own UI data model,
+but `domain` and `data` modules are global. If this project was real commercial project, some feature
+specific parts of those layer might be moved to `feature-xxx` modules.
 
-It consists of following layers:
+Project consists of following layers:
 
 #### Core
 All `core:` modules contains classes used across the app, including styling and testing setup.
