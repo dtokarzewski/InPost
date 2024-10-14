@@ -5,7 +5,6 @@ import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
-import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
@@ -48,7 +47,8 @@ class ShipmentListViewModelTest {
     fun setUp() {
         clearAllMocks()
 
-        every { getShipmentsUseCase.invoke() } returns flowOf(listOf(shipmentTestData()))
+        coEvery { getShipmentsUseCase.invoke() } returns flowOf(listOf(shipmentTestData()))
+        coJustRun { refreshShipmentsUseCase() }
 
         sut = ShipmentListViewModel(
             shipmentUiMapper = shipmentUiMapper,
@@ -136,10 +136,11 @@ class ShipmentListViewModelTest {
     @Test
     fun `GIVEN viewModel in Loaded state WHEN refresh called with error result THEN show refresh progress and error after failure`() =
         runTest {
-            coEvery { refreshShipmentsUseCase() } throws refreshException
 
             sut.uiState.test {
                 assertEquals(idleState, awaitItem())
+                advanceUntilIdle()
+                coEvery { refreshShipmentsUseCase() } throws refreshException
 
                 sut.refresh()
 
