@@ -79,7 +79,6 @@ prepare architecture for this.
 (like dates formating) are done in easy to test `Mapper`-s instead of @Composable-s. This gives good
 separation of business logic from UI logic. 
 
-===========================================================
 
 # Task description
 

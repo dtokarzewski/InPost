@@ -22,7 +22,7 @@ class RefreshShipmentsUseCaseTest {
     @Test
     fun `GIVEN useCase WHEN invoke with success result THEN return success result`() = runTest {
         coJustRun { shipmentRepository.refreshShipments() }
-        val expected = Result.success(Unit)
+        val expected = Unit
 
         val result = sut.invoke()
 

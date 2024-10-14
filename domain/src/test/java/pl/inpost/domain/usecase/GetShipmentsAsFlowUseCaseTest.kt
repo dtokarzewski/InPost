@@ -26,7 +26,7 @@ class GetShipmentsAsFlowUseCaseTest {
     fun `GIVEN useCase WHEN invoke with success result THEN return flow of shipments`() = runTest {
         every { shipmentRepository.getShipmentsAsFlow() } returns flowOf(shipmentsTestData())
 
-        val expected = listOf(shipmentTestData())
+        val expected = shipmentsTestData()
 
         sut.invoke().test {
             assertEquals(expected, awaitItem())

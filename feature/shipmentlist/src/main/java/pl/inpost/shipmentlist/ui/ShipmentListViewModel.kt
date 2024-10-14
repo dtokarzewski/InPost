@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import pl.inpost.domain.usecase.GetShipmentsAsFlowUseCase
@@ -44,8 +43,6 @@ class ShipmentListViewModel @Inject constructor(
             refreshState = refresh,
             error = error
         )
-    }.onStart {
-        refresh()
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),
