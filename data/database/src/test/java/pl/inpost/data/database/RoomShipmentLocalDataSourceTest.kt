@@ -18,11 +18,11 @@ import pl.inpost.data.database.dao.ShipmentDao
 import pl.inpost.data.database.mapper.CustomerDbMapper
 import pl.inpost.data.database.mapper.EventLogDbMapper
 import pl.inpost.data.database.mapper.ShipmentDbMapper
-import pl.inpost.data.database.model.testdata.eventLogDbTestData
-import pl.inpost.data.database.model.testdata.populatedShipmentDbTestData
-import pl.inpost.data.database.model.testdata.receiverDbTestData
-import pl.inpost.data.database.model.testdata.senderDbTestData
-import pl.inpost.data.database.model.testdata.shipmentDbTestData
+import pl.inpost.data.database.testdata.eventLogDbTestData
+import pl.inpost.data.database.testdata.populatedShipmentDbTestData
+import pl.inpost.data.database.testdata.receiverDbTestData
+import pl.inpost.data.database.testdata.senderDbTestData
+import pl.inpost.data.database.testdata.shipmentDbTestData
 import pl.inpost.domain.data.testdata.eventLogTestData
 import pl.inpost.domain.data.testdata.receiverTestData
 import pl.inpost.domain.data.testdata.senderTestData

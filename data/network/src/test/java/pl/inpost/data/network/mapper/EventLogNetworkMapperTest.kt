@@ -3,7 +3,7 @@ package pl.inpost.data.network.mapper
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import pl.inpost.data.network.model.testdata.eventLogNetworkTestData
+import pl.inpost.data.network.testdata.eventLogNetworkTestData
 import pl.inpost.domain.data.testdata.eventLogTestData
 import javax.inject.Inject
 

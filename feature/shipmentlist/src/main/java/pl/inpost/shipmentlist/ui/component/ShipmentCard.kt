@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -32,8 +30,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pl.inpost.designsystem.InPostTheme
@@ -221,8 +221,8 @@ internal fun SwipeToDismissContainer(
             val color by animateColorAsState(
                 targetValue = when (dismissState.targetValue) {
                     SwipeToDismissBoxValue.Settled -> Color.LightGray
-                    SwipeToDismissBoxValue.StartToEnd -> Color.Red
-                    SwipeToDismissBoxValue.EndToStart -> Color.Red
+                    SwipeToDismissBoxValue.StartToEnd -> Color.Gray
+                    SwipeToDismissBoxValue.EndToStart -> Color.Gray
                 },
                 label = "ColorAnimation",
             )
@@ -235,7 +235,7 @@ internal fun SwipeToDismissContainer(
                 contentAlignment = Alignment.CenterStart,
             ) {
                 Icon(
-                    imageVector = Icons.Default.Delete,
+                    imageVector = ImageVector.vectorResource(R.drawable.ic_archive),
                     contentDescription = null,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )

@@ -3,7 +3,7 @@ package pl.inpost.data.database.mapper
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import pl.inpost.data.database.model.testdata.receiverDbTestData
+import pl.inpost.data.database.testdata.receiverDbTestData
 import pl.inpost.domain.data.testdata.receiverTestData
 
 class CustomerDbMapperTest {

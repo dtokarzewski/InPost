@@ -1,4 +1,4 @@
-package pl.inpost.data.database.model.testdata
+package pl.inpost.data.database.testdata
 
 import pl.inpost.data.database.model.ShipmentDb
 import pl.inpost.data.database.model.ShipmentStatusDb

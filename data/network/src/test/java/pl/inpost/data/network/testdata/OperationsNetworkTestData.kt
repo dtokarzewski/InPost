@@ -1,8 +1,8 @@
-package pl.inpost.data.database.model.testdata
+package pl.inpost.data.network.testdata
 
-import pl.inpost.data.database.model.OperationsDb
+import pl.inpost.data.network.model.OperationsNetwork
 
-fun operationsDbTestData() = OperationsDb(
+fun operationsNetworkTestData() = OperationsNetwork(
     delete = true,
     manualArchive = true,
     collect = true,

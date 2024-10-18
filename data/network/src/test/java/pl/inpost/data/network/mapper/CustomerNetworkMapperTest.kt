@@ -3,7 +3,7 @@ package pl.inpost.data.network.mapper
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import pl.inpost.data.network.model.testdata.receiverNetworkTestData
+import pl.inpost.data.network.testdata.receiverNetworkTestData
 import pl.inpost.domain.data.testdata.receiverTestData
 
 class CustomerNetworkMapperTest {

@@ -1,4 +1,4 @@
-package pl.inpost.data.network.model.testdata
+package pl.inpost.data.network.testdata
 
 import pl.inpost.data.network.model.CustomerNetwork
 

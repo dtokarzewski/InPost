@@ -3,7 +3,7 @@ package pl.inpost.data.database.mapper
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import pl.inpost.data.database.model.testdata.populatedShipmentDbTestData
+import pl.inpost.data.database.testdata.populatedShipmentDbTestData
 import pl.inpost.data.network.mapper.ShipmentTypeDbMapper
 import pl.inpost.domain.data.testdata.shipmentTestData
 

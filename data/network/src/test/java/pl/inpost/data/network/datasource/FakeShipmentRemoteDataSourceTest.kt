@@ -13,7 +13,7 @@ import pl.inpost.data.network.mapper.OperationsNetworkMapper
 import pl.inpost.data.network.mapper.ShipmentNetworkMapper
 import pl.inpost.data.network.mapper.ShipmentStatusNetworkMapper
 import pl.inpost.data.network.mapper.ShipmentTypeNetworkMapper
-import pl.inpost.data.network.model.testdata.shipmentsNetworkTestData
+import pl.inpost.data.network.testdata.shipmentsNetworkTestData
 import pl.inpost.domain.data.testdata.shipmentsTestData
 import java.io.IOException
 

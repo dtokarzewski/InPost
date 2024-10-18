@@ -3,6 +3,9 @@
 This project is sample offline-first, Android app. It's a recruitment task but also, it's designed to be a
 playground for testing various architecture solutions and new libraries.
 
+Project follows Clean Architecture principles. It's for sure an overkill for such small project, but
+it's purpose is to show an example of an architecture suitable for large scale project.
+
 ### Building
 No special operations needed - just run project in Android Studio.
 
